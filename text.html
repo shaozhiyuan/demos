@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <script>
+       window.onload=function () {
+           var a=document.getElementById("a1") ;
+           var b=document.getElementById("a2");
+           var c=document.getElementById("a3");
+            c.onclick=function () {
+               var num=parseInt(a.value)+parseInt(b.value);
+               if(isNaN(num)==false){
+                   alert(num);
+               }
+               else{
+                   alert("cacaca")
+               }
+
+            }
+
+       }
+    </script>
+</head>
+<body>
+<input id="a1" type="text">
+<input id="a2" type="text">
+<input id="a3" type="button">
+<input type="file">
+</body>
+</html>
