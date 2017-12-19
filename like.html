@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .wrap {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #e9dedc;
+            width: 300px;
+            height: 180px;
+            border-radius: 3px;
+            font-family: "Microsoft YaHei", "微软雅黑";
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+        .top {
+            color: white;
+            height: 30px;
+            background-color: #079ed5;
+            border-radius: 3px 3px 0 0;
+            line-height: 30px;
+            padding-left: 20px;
+        }
+        .content {
+            height: 110px;
+            background: #fff;
+            padding: 20px;
+        }
+        .footer {
+            height: 40px;
+            background-color: #079ed5;
+            padding-right: 15px;
+            border-radius: 0 0 3px 3px;
+        }
+        .footer>div {
+            position: absolute;
+            font-size: 14px;
+            width: 68px;
+            height: 30px;
+            line-height: 30px;
+            background-color: #fff;
+            border-radius: 3px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #2f2e31;
+        }
+        .footer>div:first-child {
+            bottom: 5px;
+            right: 5px;
+        }
+        .footer>div:last-child {
+            bottom: 5px;
+            right: 83px;
+        }
+        .footer>div:hover {
+            background-color: #f9f6f6;
+        }
+        .footer>.n1 {
+            margin-top: -30px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div class="top">
+        提示 :
+    </div>
+    <div class="content">
+        你是不是喜欢我
+    </div>
+    <div class="footer">
+        <div class="b n1">不是</div>
+        <div class="a">是</div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script>
+    var a = $(".a").text();
+    var b = $(".b").text();
+    var hovered = true;
+    $(".n1").hover(function () {
+       if(hovered){
+           hovered = false;
+           $(this).animate({
+               bottom: 70
+           },200)
+       }
+    },function () {
+        $(".n1").unbind("hover");
+        $(".n1").hover(function () {
+            console.log(1);
+            $(this).animate({
+                bottom: 5
+            },200,function () {
+                $(".n1").unbind("hover");
+                exChange()
+            })
+        });
+    });
+    function exChange() {
+        $(".b").hover(function () {
+            $(".a").removeClass("a").addClass("b").text(b);
+            $(this).removeClass("b");
+            $(this).text(a);
+            $(this).addClass("a");
+
+        },function () {
+            $(".b").hover(function () {
+                $(".a").removeClass("a").addClass("b").text(b);
+                $(this).removeClass("b");
+                $(this).text(a);
+                $(this).addClass("a");
+            });
+        })
+    }
+    $(".a").click(function () {
+        alert("就知道，嘿嘿嘿")
+    });
+   $(".n1").click(function () {
+        alert("就知道，嘿嘿嘿")
+    });
+</script>
+</body>
+</html>
